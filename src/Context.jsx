@@ -8,16 +8,10 @@ const Context = ({ children }) => {
 
   const getWeather = async (place) => {
     try {
-      const response = await axios.get(
-        `http://api.weatherapi.com/v1/forecast.json`,
-        {
-          params: {
-            key: "no u dont",
-            q: place,
-            days: 5,
-          },
-        }
-      );
+      const response = await axios.get("http://localhost:3000/getData", {
+        params: { place: place },
+      });
+      console.log(response)
       setWeatherData(response.data); // Set the weather data received from the API
     } catch (error) {
       console.error("Error fetching weather data:", error);
