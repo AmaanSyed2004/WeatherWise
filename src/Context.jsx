@@ -25,12 +25,14 @@ const Context = ({ children }) => {
   };
   let currentWeatherData;
   if (weatherData !== null) {
+    let inputtime=weatherData.location.localtime;
+    let time= inputtime.split(' ')[1]
     currentWeatherData = {
       location: {
         name: weatherData.location.name,
         country: weatherData.location.country,
       },
-      time: weatherData.location.localtime,
+      time,
       icon: weatherData.current.condition.icon,
       condition: weatherData.current.condition.text,
       currentTemp: weatherData.current.temp_c,

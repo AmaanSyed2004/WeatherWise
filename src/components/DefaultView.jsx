@@ -1,8 +1,7 @@
-
 const DefaultView= ()=>{
     return(
-        <section>
-            <h1 className="text-slate-400"> Enter a location!</h1>
+        <section className="flex flex-col justify-center items-center h-screen">
+            <h2 className="text-slate-400 text-3xl font-mono"> Enter a location!</h2>
         </section>
     )
 }
