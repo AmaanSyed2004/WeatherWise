@@ -5,8 +5,11 @@ export const weatherContext = createContext();
 
 const Context = ({ children }) => {
   const [weatherData, setWeatherData] = useState(null);
-
+  const [loading, setLoading] = useState(false);
+  const [error, setError]= useState(null);
   const getWeather = async (place) => {
+    setLoading(true);
+    setError(null);
     try {
       const response = await axios.get("http://localhost:3000/getData", {
         params: { place: place },
@@ -15,6 +18,9 @@ const Context = ({ children }) => {
       setWeatherData(response.data); // Set the weather data received from the API
     } catch (error) {
       console.error("Error fetching weather data:", error);
+      setError("Error fetching data, please try again.")
+    } finally{
+      setLoading(false);
     }
   };
   let currentWeatherData;
@@ -34,7 +40,7 @@ const Context = ({ children }) => {
   }
   return (
     <weatherContext.Provider
-      value={{ weatherData, getWeather, currentWeatherData }}
+      value={{ weatherData, getWeather, currentWeatherData, loading, error }}
     >
       {children}
     </weatherContext.Provider>

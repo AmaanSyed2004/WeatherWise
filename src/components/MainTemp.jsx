@@ -18,7 +18,7 @@ const MainTemp = () => {
   } = currentWeatherData;
 
   return (
-    <div className="md:row-span-2 bg-slate-700  rounded-md flex flex-col justify-end h-1/2 md:w-11/12 ml-4 w-52">
+    <div className="md:row-span-2 bg-slate-700  rounded-md flex flex-col justify-end md:h-1/2 md:w-11/12 ml-6 w-96">
         <h2 className="text-slate-400 text-5xl md:text-7xl">{currentTemp}</h2>
 
 
